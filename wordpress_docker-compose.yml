@@ -6,7 +6,7 @@ services:
     image: mysql
     restart: always
     env_file:
-      - variable.env
+      - variables.env
     volumes:
       - ./mysql/data:/var/lib/mysql
   nginx:
