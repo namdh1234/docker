@@ -27,7 +27,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./wordpress:/var/www
+      - ./web/wordpress:/var/www
     depends_on:
       - mysql
 
