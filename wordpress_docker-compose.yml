@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+
+  mysql:
+    image: mysql
+    restart: always
+    env_file:
+      - variable.env
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+  nginx:
+    depends_on:
+      - phpfpm
+    image: nginx
+    ports:
+      - "80:80"
+    restart: always
+    working_dir: /var/www
+    volumes:
+      - ./wordpress:/var/www
+      - ./config/nginx/:/etc/nginx/conf.d/
+  phpfpm:
+    image: phalconphp/php-apache:ubuntu-16.04
+    restart: always
+    working_dir: /var/www
+    ports:
+      - "8080:80"
+    volumes:
+      - ./wordpress:/var/www
+    depends_on:
+      - mysql
+
+   
+
