@@ -6,8 +6,8 @@ services:
         restart: always
         env_file:
            - variables.env
-        # volumes:
-        #     - ./data/mysql:/docker-entrypoint-initdb.d
+        volumes:
+           - ./mysql/data:/var/lib/mysql
     nginx:
         depends_on:
             - phpfpm
