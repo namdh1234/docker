@@ -1,0 +1,1 @@
+# This folder store database datafiles
